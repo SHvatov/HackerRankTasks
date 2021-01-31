@@ -1,4 +1,4 @@
-package com.shvatov.hacker.rank.easy
+package com.shvatov.hacker.rank.easy.preps
 
 import java.util.*
 

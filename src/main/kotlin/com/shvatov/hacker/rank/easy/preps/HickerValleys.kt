@@ -1,4 +1,4 @@
-package com.shvatov.hacker.rank.easy
+package com.shvatov.hacker.rank.easy.preps
 
 /*
  * Complete the 'countingValleys' function below.

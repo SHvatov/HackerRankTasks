@@ -1,4 +1,4 @@
-package com.shvatov.hacker.rank.easy
+package com.shvatov.hacker.rank.easy.preps
 
 fun sockMerchant(ar: Array<Int>): Int {
     return ar.groupBy { it }
