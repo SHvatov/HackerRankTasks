@@ -1,4 +1,4 @@
-package com.shvatov.tasks.hackerrank.easy.arrays
+package com.shvatov.tasks.hackerrank.arrays
 
 data class Element<T : Any>(val value: T) {
     lateinit var next: Element<T>

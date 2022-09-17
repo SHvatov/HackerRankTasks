@@ -1,4 +1,4 @@
-package com.shvatov.tasks.hackerrank.easy.common
+package com.shvatov.tasks.hackerrank.common
 
 import java.util.*
 

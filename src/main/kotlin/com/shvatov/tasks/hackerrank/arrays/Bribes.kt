@@ -1,4 +1,4 @@
-package com.shvatov.tasks.hackerrank.easy.arrays
+package com.shvatov.tasks.hackerrank.arrays
 
 fun isSorted(q: Array<Int>): Boolean {
     (0 until q.size - 1).forEach {
