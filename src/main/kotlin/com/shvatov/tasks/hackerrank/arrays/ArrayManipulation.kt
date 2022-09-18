@@ -1,5 +1,7 @@
 package com.shvatov.tasks.hackerrank.arrays
 
+import java.util.*
+
 val Array<Long>.start: Long
     get() = get(0) - 1
 
@@ -10,27 +12,23 @@ val Array<Long>.incrementValue: Long
     get() = get(2)
 
 fun arrayManipulation(n: Int, queries: Array<Array<Long>>): Long {
-    val sortedQueries = queries.sortedBy { it[0] }
+    val sortedQueries = LinkedList(queries.sortedBy { it[0] })
     val workingArray = LongArray(n) { 0L }
 
     var maxArrayValue = Long.MIN_VALUE
-//    var nextQueryIndex = 0
+    val deprecatedQueries = mutableSetOf<Int>()
     workingArray.indices.forEach { index ->
-        sortedQueries.forEach { query ->
-            if (index >= query.start && index <= query.end) {
-                workingArray[index] += query.incrementValue
+        sortedQueries.withIndex().forEach { (queryIndex, query) ->
+            if (!deprecatedQueries.contains(queryIndex)) {
+                if (index >= query.start) {
+                    workingArray[index] += query.incrementValue
+                }
+
+                if (index >= query.end) {
+                    deprecatedQueries.add(queryIndex)
+                }
             }
         }
-//        (nextQueryIndex until sortedQueries.size).forEach { queryIndex ->
-//            val query = sortedQueries[queryIndex]
-//            if (index >= query.start) {
-//                workingArray[index] += query.incrementValue
-//            }
-//
-//            if (index.toLong() == query.end) {
-//                nextQueryIndex++
-//            }
-//        }
 
         if (workingArray[index] > maxArrayValue) {
             maxArrayValue = workingArray[index]
