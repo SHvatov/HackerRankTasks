@@ -37,23 +37,35 @@ fun arrayManipulation(n: Int, queries: Array<Array<Long>>): Long {
     return maxArrayValue
 }
 
+fun readLineAndSplit() = readLine()!!.trimEnd().split(" ")
+
 fun main(args: Array<String>) {
-    val firstMultipleInput = readLine()!!.trimEnd().split(" ")
-
+    val firstMultipleInput = readLineAndSplit()
     val n = firstMultipleInput[0].toInt()
-
     val m = firstMultipleInput[1].toInt()
 
-    val queries = Array(m) { Array(3) { 0L } }
+    val workingArray = LongArray(n + 1) { 0 }
+    repeat(m) {
+        val (start, end, incrementValue) = readLineAndSplit()
+            .map { it.toInt() }
 
-    for (i in 0 until m) {
-        queries[i] = readLine()!!.trimEnd().split(" ").map { it.toLong() }.toTypedArray()
+        workingArray[start] += incrementValue.toLong()
+        if (end + 1 < workingArray.size) {
+            workingArray[end + 1] -= incrementValue.toLong()
+        }
     }
 
-    val result = arrayManipulation(n, queries)
+    var maxValue = Long.MIN_VALUE
+    var currentValue = 0L
+    for (el in workingArray) {
+        currentValue += el
+        if (currentValue > maxValue) {
+            maxValue = currentValue
+        }
+    }
 
-    println(result)
+    println(maxValue)
 }
 
 // 7496167325
-// 8209183117
+// 7493235914
